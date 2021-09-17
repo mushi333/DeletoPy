@@ -1,5 +1,7 @@
 """
-A python cmd prompt application to delete certain file types in your folder
+A python cmd prompt application to delete certain file types in your folder.
+
+Credit to https://linuxize.com/post/python-delete-files-and-directories/ for deletion logic.
 """
 
 import os, glob
@@ -22,7 +24,7 @@ class Delete:
                 print("Found file: " + file)
                 print("Attempting to delete file: " + file)
                 os.remove(file)
-                print("File: " + file + " was deleted succesfully")
+                print("File: " + file + " was deleted successfully")
             except OSError as exception:
                 print("Error: %s : %s" % (file, exception.strerror))
                 return
