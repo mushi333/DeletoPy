@@ -4,22 +4,19 @@ A python cmd prompt application to delete certain file types in your folder
 
 import os, glob
 
-# folder = "tmp"
-# file_type = "asdf.txt"
-# current_file_path = folder + "/" + file_type
-global_file_type = "jpg"
-global_glob_files = glob.glob('*.' + global_file_type, recursive=True)
-
 
 class Delete:
-    def __init__(self, glob_files):
-        self.glob_files = glob_files
+    def __init__(self, new_file_type):
+        self.file_type = new_file_type
+        self.glob_files = glob.glob('*' + new_file_type, recursive=True)
 
     def delete_file(self):
-        if self.glob_files == []:
-            print("No specified file type: " + global_file_type + " was found")
+        # Exit if there are specified files found
+        if not self.glob_files:
+            print("No specified file type: *" + self.file_type + " was found")
             return
 
+        # Loop through and delete each file found
         for file in self.glob_files:
             try:
                 print("Found file: " + file)
@@ -28,10 +25,12 @@ class Delete:
                 print("File: " + file + " was deleted succesfully")
             except OSError as exception:
                 print("Error: %s : %s" % (file, exception.strerror))
+                return
 
 
 if __name__ == '__main__':
-    delete_instance = Delete(global_glob_files)
+    file_type = "3.jpg"
+    delete_instance = Delete(file_type)
     delete_instance.delete_file()
     print("Exiting app")
     exit()
