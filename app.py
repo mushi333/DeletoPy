@@ -5,7 +5,8 @@ Documentation Formatting - NumPy
 Credit to https://linuxize.com/post/python-delete-files-and-directories/ for deletion logic.
 """
 
-import os, glob
+import os
+import glob
 
 
 class Delete:
@@ -87,7 +88,7 @@ if __name__ == '__main__':
     you want to delete.
     2. Insert the file ending strings into the files_exempted list. You can 
     add as many file endings as you want.
-    3. A example could be using ".jpg" and ["1"]. With this only files ending
+    3. An example could be using ".jpg" and ["1"]. With this only files ending
     with *1.jpg will be exempted from being deleted.
     """
     file_type = ".jpg"
