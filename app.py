@@ -43,6 +43,7 @@ class Delete:
         -------
         None
         """
+        self.file_type = file_type
         self.final_files_exempted = []
         i = 0
         while i < len(new_files_exempted):
@@ -71,7 +72,9 @@ class Delete:
         # Loop through and delete each file found
         for file in self.glob_files:
             try:
-                if file not in self.final_files_exempted:
+                #TODO - Account for random length strings in files exempted
+                num_last_n_char = len(self.final_files_exempted[0])
+                if file[-num_last_n_char:] not in self.final_files_exempted:
                     print("Found file: " + file)
                     print("Attempting to delete file: " + file)
                     os.remove(file)
