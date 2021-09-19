@@ -1,5 +1,4 @@
 """
-Version - 0.1
 Author - Mujtaba Zahidi
 Documentation Formatting - NumPy
 Credit to https://linuxize.com/post/python-delete-files-and-directories/ for deletion logic.
@@ -27,7 +26,7 @@ class Delete:
         Iterates through the glob files and deletes those that are not exempted
 
     """
-    def __init__(self, new_file_type, new_files_exempted):
+    def __init__(self, new_file_type, new_files_exempted, new_delete_in_sub_dir):
         """
         Combines the files exempted with the file type to create a new list of
         exempted files.
@@ -38,6 +37,9 @@ class Delete:
             String containing the .file format.
         new_files_exempted : str
             String list containing the files to not delete.
+        new_delete_in_sub_dir : bool
+            A flag on whether sub-directories should be checked in to delete
+            from.
 
         Returns
         -------
@@ -50,7 +52,10 @@ class Delete:
             self.final_files_exempted.append(new_files_exempted[i] + new_file_type)
             i += 1
 
-        self.glob_files = glob.glob('*' + file_type, recursive=True)
+        if new_delete_in_sub_dir is True:
+            self.glob_files = glob.glob('*/**' + file_type, recursive=True)
+        else:
+            self.glob_files = glob.glob('*' + file_type, recursive=True)
 
     def delete_file(self):
         """
@@ -89,14 +94,17 @@ if __name__ == '__main__':
     Instructions:
     1. Change the file_type variable with the dot notation to the file type
     you want to delete.
+    2. Flag True or False on whether you want to delete files in sub-
+    directories.
     2. Insert the file ending strings into the files_exempted list. You can 
     add as many file endings as you want.
     3. An example could be using ".jpg" and ["1"]. With this only files ending
     with *1.jpg will be exempted from being deleted.
     """
     file_type = ".jpg"
+    delete_in_sub_directory = True
     files_exempted = ["1", "2", "3"]
-    delete_instance = Delete(file_type, files_exempted)
+    delete_instance = Delete(file_type, files_exempted, delete_in_sub_directory)
     delete_instance.delete_file()
     print("Exiting app")
     exit()
