@@ -12,13 +12,12 @@ The tech stack for this portfolio website is currently:
  - Python 3.7
  
 ## Installation
-To install this project just follow these steps:
+To install this project and in the directory you want, just follow these steps:
 ````
  git clone https://github.com/mushi333/DeletoPy.git
  cd DeletoPy
  python app.py
 ````
- Then just run the app.py in the folder where you want the files deleted
  
 ## Project Specifications and Constraints
 The current specifications only allow deleting files that don't have 1 to 3 as the last letter before the ".jpg" format.
