@@ -18,6 +18,7 @@ To install this project and in the directory you want, just follow these steps:
  cd DeletoPy
  python app.py
 ````
+Or alternatvely, follow these Google Drive instructions [here.]https://drive.google.com/drive/folders/1NFWgh9EKiW3FZ_BR5Ue4F0lY4w90ptBM?usp=sharing
  
 ## Project Specifications and Constraints
 The current specifications only allow deleting files that don't have 1 to 3 as the last letter before the ".jpg" format.
